@@ -1,34 +1,27 @@
-import { Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
-//const Login = lazy(() => import('./pages/Login'))
+import Layout from './component/layout/Layout'
+import { PathName } from './config/path.name'
+const ListPost = lazy(() => import('./pages/listPost/ListPost'))
+
 export default function useRouterElements() {
   const routeElements = useRoutes([
-    // {
-    //   path: '',
-    //   element: <RejectedRoute />,
-    //   children: [
-    //     {
-    //       path: path.login,
-    //       element: (
-    //         <RegisterLayout>
-    //           <Suspense>
-    //             <Login />
-    //           </Suspense>
-    //         </RegisterLayout>
-    //       )
-    //     },
-    //     {
-    //       path: path.register,
-    //       element: (
-    //         <RegisterLayout>
-    //           <Suspense>
-    //             <Register />
-    //           </Suspense>
-    //         </RegisterLayout>
-    //       )
-    //     }
-    //   ]
-    // }
+    {
+      path: '',
+      // element: <RejectedRoute />,
+      children: [
+        {
+          path: PathName.list,
+          element: (
+            <Layout>
+              <Suspense>
+                <ListPost />
+              </Suspense>
+            </Layout>
+          )
+        }
+      ]
+    }
   ])
   return routeElements
 }
