@@ -1,13 +1,18 @@
 import React from 'react'
+import { postData } from '../../fake_data/post.data'
+import { TDataPost } from '../../interface/type'
 import Header from './component/header/Header'
 import Post from './component/post/Post'
 
 export default function ListPost() {
   return (
-    <div>
-      list post
+    <div className='mt-20 w-full'>
       <Header />
-      <Post />
+      <div className='mt-10 grid grid-cols-3'>
+        {postData.map((data: TDataPost, index) => {
+          return <Post key={index} {...data} />
+        })}
+      </div>
     </div>
   )
 }
