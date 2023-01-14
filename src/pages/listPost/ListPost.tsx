@@ -6,9 +6,9 @@ import Post from './component/post/Post'
 
 export default function ListPost() {
   return (
-    <div className='mt-20 w-full'>
+    <div className='mt-20 w-full  '>
       <Header />
-      <div className='mt-10 grid grid-cols-3'>
+      <div className='mt-10 flex flex-wrap '>
         {postData.map((data: TDataPost, index) => {
           return <Post key={index} {...data} />
         })}
